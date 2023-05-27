@@ -1,0 +1,11 @@
+{
+    "apps" : [
+      {
+        "name"      : "Lochan real estate",
+        "script"    : "npx",
+        "interpreter": "none",
+        "args": "serve -s build -p 7000"
+      }
+    ]
+  }
+  
