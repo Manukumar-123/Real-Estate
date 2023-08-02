@@ -136,13 +136,13 @@ const Header = () => {
                                             step={1000}
                                             valueLabelDisplay="auto"
                                             onChange={userData}
-                                            color="secondary"
+                                            sx={{color:'#0A356E'}}
                                         />
                                         </div>
                                         <Link to="/listing" className="w-full">
 
                                         <button
-                                          className="px-4 py-3  text-white rounded-md font-semibold bg-blue-800 text-center w-full ">Search Property</button>
+                                          className="px-4 py-3  text-white rounded-md font-semibold bg-[#0A356E] text-center w-full ">Search Property</button>
                                             
                                           </Link>
                                     </div>

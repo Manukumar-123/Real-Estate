@@ -9,6 +9,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
+import {
+  Formik,
+  Form,
+  Field
+} from 'formik'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -49,8 +54,50 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
+
+  //validate register
+
+  const validateField = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = 'Username is required';
+    }
+
+    if (!values.email) {
+      errors.email = 'Email is required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+      errors.password = 'Password is required';
+    } else if (values.password.length < 6) {
+      errors.password = 'Password must be at least 6 characters long';
+    }
+
+    return errors;
+  };
+
+  //initial value register
+  const initialValue = {
+    username: '',
+    email: '',
+    password: ''
+  }
+
+  //register
+  const Submit = (values) => {
+    console.log(values)
+  }
+
+
+  //login
+  const Login = (values) => {
+    console.log(values)
+  }
   return (
-    
+
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -58,59 +105,132 @@ export default function BasicTabs() {
           <Tab label="Register" {...a11yProps(1)} />
         </Tabs>
       </Box>
-        <TabPanel value={value} index={0} className="p-0">
-            <div className='grid md:grid-cols-2 gap-4 mt-4'>
-                <div>
-                    <div className='mb-5'>
-                        <TextField type='email' required label="Email"  className='w-full' />
-                    </div>
-                    <div className='mb-3'>
-                        <TextField type='password' required label="Password"  className='w-full'/>
-                    </div>
-                    <div className='flex justify-between items-center mb-3'>
-                        <div className='pr-3'>
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me"/>
-                        </div>
-                        <div>
-                            <a href="/">Forgot Password?</a>
-                        </div>
-                    </div>
-                    <div><button className='px-4 py-3 text-white rounded-md font-semibold bg-blue-800 text-center w-full'>Log In</button></div>
-                </div>
-                <div className='pt-5 text-center'>
-                    <img src='./login-1.png' className='m-auto'/>
-                    <p className='my-3 text-sm text-gray-600'>Welcome Back! Please Login to your Account for latest property listings.</p>
-                </div>
-            </div>  
-            
-        </TabPanel>
-        <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={0} className="p-0">
         <div className='grid md:grid-cols-2 gap-4 mt-4'>
+          <Formik initialValues={{ loginEmail: '', loginPassword: '' }} onSubmit={Login}>
+            {({}) => (
+              <Form>
+                <div className='mb-5'>
+                  <Field
+                    as={TextField}
+                    type='email'
+                    required
+                    label="Email"
+                    name='loginEmail'
+                    className='w-full'
+                  />
+                
+                </div>
+                <div className='mb-3'>
+                  <Field
+                    as={TextField}
+                    type='password'
+                    required
+                    label="Password"
+                    name='loginPassword'
+                    className='w-full'
+                  />
+                 
+                </div>
+                <div className='flex justify-between items-center mb-3'>
+                  <div className='pr-3'>
+                    <FormControlLabel
+                      control={<Checkbox defaultChecked />}
+                      label="Remember Me"
+                    />
+                  </div>
+                  <div>
+                    <a href="/">Forgot Password?</a>
+                  </div>
+                </div>
                 <div>
-                    <div className='mb-5'>
-                        <TextField type='text' required label="Username" defaultValue="" className='w-full' />
-                    </div>
-                    <div className='mb-5'>
-                        <TextField type='email' required label="Email Adddress" defaultValue="" className='w-full' />
-                    </div>
-                    <div className='mb-3'>
-                        <TextField type='password' required label="Password" defaultValue="" className='w-full'/>
-                    </div>
-                    <div className='mb-3'>
-                        <TextField type='password' required label="Confirm Password" defaultValue="" className='w-full'/>
-                    </div>
-                    <div className='flex items-center mb-3 text-left'>
-                        <FormControlLabel control={<Checkbox defaultChecked />} />
-                        <p className='text-sm'>I've read and accept <a href="/">terms & conditions</a></p>
-                    </div>
-                    <div><div><button className='px-4 py-3 text-white rounded-md font-semibold bg-blue-800 text-center w-full'>Sign Up</button></div></div>
+                  <button className='px-4 py-3 text-white rounded-md font-semibold bg-blue-800 text-center w-full' type="submit">Log In</button>
                 </div>
-                <div className='pt-5 text-center'>
-                    <img src='./login-1.png' className='m-auto'/>
-                    <p className='my-3 text-sm text-gray-600'>Welcome Back! Please Login to your Account for latest property listings.</p>
+              </Form>
+            )}
+          </Formik>
+          <div className='pt-5 text-center'>
+            <img src='./login-1.png' className='m-auto' />
+            <p className='my-3 text-sm text-gray-600'>Welcome Back! Please Login to your Account for latest property listings.</p>
+          </div>
+        </div>
+
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <div className='grid md:grid-cols-2 gap-4 mt-4'>
+          <Formik initialValues={initialValue} onSubmit={Submit} validate={validateField}>
+            {({ errors, touched }) => (
+              <Form>
+                <div className='mb-5'>
+                  <Field
+                    as={TextField}
+                    type='text'
+                    required
+                    label="Username"
+                    name='username'
+                    defaultValue=""
+                    className='w-full'
+                  />
+                  {touched.username && errors.username && (
+                    <div className="text-red-500">{errors.username}</div>
+                  )}
                 </div>
-            </div>  
-        </TabPanel>
+                <div className='mb-5'>
+                  <Field
+                    as={TextField}
+                    type='email'
+                    name='email'
+                    required
+                    label="Email Address"
+                    defaultValue=""
+                    className='w-full'
+                  />
+                  {touched.email && errors.email && (
+                    <div className="text-red-500">{errors.email}</div>
+                  )}
+                </div>
+                <div className='mb-3'>
+                  <Field
+                    as={TextField}
+                    type='password'
+                    required
+                    name='password'
+                    label="Password"
+                    defaultValue=""
+                    className='w-full'
+                  />
+                  {touched.password && errors.password && (
+                    <div className="text-red-500">{errors.password}</div>
+                  )}
+                </div>
+                <div className='flex items-center mb-3 text-left'>
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                  />
+                  <p className='text-sm'>I've read and accept <a href="/">terms & conditions</a></p>
+                </div>
+                <div>
+                  <div>
+                    <button
+                      className={`px-4 py-3 text-white rounded-md font-semibold bg-blue-800 ${
+                        Object.keys(errors).length !== 0 ? 'bg-gray-400' : 'bg-blue-800'
+                      } text-center w-full`}
+                      type="submit"
+                      disabled={Object.keys(errors).length !== 0} 
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <div className='pt-5 text-center'>
+            <img src='./login-1.png' className='m-auto' />
+            <p className='my-3 text-sm text-gray-600'>Welcome Back! Please Login to your Account for latest property listings.</p>
+          </div>
+        </div>
+      </TabPanel>
     </Box>
   );
 }

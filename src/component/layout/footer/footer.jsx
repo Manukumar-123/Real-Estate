@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <>
-            <div className='py-10 text-white bg-[#323232]'>
+            <div className='py-10 text-white bg-[#323232] w-full'>
                 <Container>
                     <Grid container className=' space-y-8 md:space-y-0 lg:space-y-0'>
                         <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -84,7 +84,7 @@ const Footer = () => {
                                 <h2 className=' font-bold text-xl text-start'>Subscribe</h2>
                                 <div className='flex'>
                                     <input type="text" placeholder='Your mail address ..' className='p-2 outline-0 border border-[#ccc]' />
-                                    <button className='bg-orange-600 text-white p-2 px-3 font-semibold'>Subscribe</button>
+                                    <button className='bg-[#0A356E] text-white p-2 px-3 font-semibold'>Subscribe</button>
                                 </div>
                                 <div >
                                     <h2 className='text-start font-semibold text-white'>Follow us on</h2>

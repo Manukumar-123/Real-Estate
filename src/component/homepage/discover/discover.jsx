@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Discover = () => {
     return (
@@ -19,7 +20,9 @@ const Discover = () => {
                         <div className=" p-4  py-12 space-y-4 text-center">
                             <h3 className="font-bold text-2xl">Sell Your Home</h3>
                             <p className="text-gray-500 leading-6">Trust the sale of your home to a trusted partner. We’re here to help guide you through every step of the process with expert advice and representation.</p>
-                            <button className="bg-[#0A356E] text-white font-bold text-lg px-4 py-2 rounded-sm hover:rounded-lg duration-300 hover:duration-300">YOUR HOME'S VALUE</button>
+                            <button>
+                                <Link to="/valuation" className="bg-[#0A356E] text-white font-bold text-lg px-4 py-2 rounded-sm hover:rounded-lg duration-300 hover:duration-300">YOUR HOME'S VALUE</Link>
+                            </button>
                         </div>
                     </div>
                 </Container>

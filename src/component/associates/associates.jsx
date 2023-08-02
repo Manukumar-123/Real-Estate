@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import EmailIcon from '@mui/icons-material/Email';
 import PhonelinkRingIcon from '@mui/icons-material/PhonelinkRing';
 import PersonIcon from '@mui/icons-material/Person';
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const AgentDetails = [
     {
@@ -82,7 +82,9 @@ const Associates = () => {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
-    console.log(personName);
+
+    //agent click
+
     return (
         <>
             <Container>
@@ -128,7 +130,7 @@ const Associates = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3">
                         {
                             AgentDetails?.map((item, index) => (
-                                <Link to='/' className="p-8 rounded-md flex flex-col items-center" key={index}>
+                                <Link to="/agentDetails" className="p-8 rounded-md flex flex-col items-center" key={index}>
                                     <div className="w-full h-80 text-centeroverflow-hidden flex item-center justify-center">
                                         <img src={item.img} className="w-full rounded-t-md object-cover" />
                                     </div>

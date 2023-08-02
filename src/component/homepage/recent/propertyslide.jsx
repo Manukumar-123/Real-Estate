@@ -83,7 +83,7 @@ export default function SimpleSlider() {
                       <div className="overflow-hidden relative rounded-md  rounded-t-lg propertyblock">
                           <Link to='/' className="">
                               <img src={items.proImg} alt={items.alt} width="100%" style={{height:'250px'}} className="   duration-700 hover:scale-110 hover:duration-700" />
-                              <span className="absolute top-5 right-6 text-xs text-white bg-orange-600 rounded py-1 px-3">Views</span>
+                              <span className="absolute top-5 right-6 text-xs text-white font-semibold bg-[#0A356E] rounded py-1 px-3">New</span>
                               <div className=" absolute bottom-0 pb-5 left-0 w-full px-4 text-white items-start z-10 hidden agenthoverbox">
                                   <div className="flex justify-between items-center">
                                     <div className="flex items-center pr-2 z-50">

@@ -14,10 +14,12 @@ import CloseIcon from '@mui/icons-material/Close';
 const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Listing', href: '/listing', current: false },
-  { name: 'Property', href: '/property', current: false },
-  { name: 'Details', href: '/details', current: false },
+  // { name: 'Property', href: '/', current: false },
+  // { name: 'Details', href: '/details', current: false },
+  { name: 'Associates', href: '/associate', current: false },
+  { name: 'Home Valuation', href: '/valuation', current: false },
+  { name: 'Blog', href: '/blog', current : false },
   { name: 'Contact', href: '/contact', current: false },
-  { name: 'Associates', href: '/associate', current: false }
 ]
 
 function classNames(...classes) {
@@ -87,7 +89,7 @@ export default function Header({ color, position }) {
                   className='me-5 hidden lg:block'
                 >
                   <span className="sr-only">View notifications</span>
-                  <Badge color="secondary" badgeContent={1}>
+                  <Badge color="primary" badgeContent={1}>
                     <FavoriteBorderIcon sx={{ fontSize: '25px', color: 'white' }} />
                   </Badge>
                 </button>
