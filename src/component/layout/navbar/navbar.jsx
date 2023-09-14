@@ -10,15 +10,16 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Login from './auth';
 import CloseIcon from '@mui/icons-material/Close';
+import LoginIcon from '@mui/icons-material/Login';
 
 const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Listing', href: '/listing', current: false },
   // { name: 'Property', href: '/', current: false },
   // { name: 'Details', href: '/details', current: false },
-  { name: 'Associates', href: '/associate', current: false },
+  { name: 'Agent', href: '/associate', current: false },
   { name: 'Home Valuation', href: '/valuation', current: false },
-  { name: 'Blog', href: '/blog', current : false },
+  // { name: 'Blog', href: '/blog', current : false },
   { name: 'Contact', href: '/contact', current: false },
 ]
 
@@ -27,7 +28,7 @@ function classNames(...classes) {
 }
 
 export default function Header({ color, position }) {
-  const [showModal, setShowModal] = React.useState(false);
+  const [show, setShow] = React.useState(false);
   return (
     <Disclosure as="nav" className={`border-b ${color} top-0 left-0 w-full z-50 ${position}`}>
       {({ open }) => (
@@ -45,6 +46,7 @@ export default function Header({ color, position }) {
                     <Bars3Icon className="block h-6 w-6 text-white" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
+
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
@@ -53,7 +55,7 @@ export default function Header({ color, position }) {
                       className="block h-10 w-auto lg:hidden"
                       src="./logo.png"
                       alt="Your Company"
-                    // style={{width:'140px'}}
+                    // style={{width:'240px'}}
                     />
                   </Link>
                   <Link to="/">
@@ -61,7 +63,7 @@ export default function Header({ color, position }) {
                       className="hidden h-10 w-auto lg:block"
                       src="./logo.png"
                       alt="Your Company"
-                    // style={{width:'140px'}}
+                      style={{ width: '140px' }}
                     />
                   </Link>
                 </div>
@@ -152,47 +154,41 @@ export default function Header({ color, position }) {
                 </Menu>
 
                 {/* login icon */}
+                <div className='relative'>
+                  <button
+                    className='border border-white p-2 px-3 hover:text-blue-500 rounded-lg duration-200 text-white text-bold hidden lg:block '
+                    onClick={() => setShow(!show)}>
+                    <PersonOutlineOutlinedIcon sx={{ color: 'white' }} /> Login / Register
+                  </button>
+                  {
+                    show ? <div className='absolute rounded-lg top-12 right-0 py-2 px-5  bg-black bg-opacity-80  border border-white space-y-4'>
+                      <Link to='/buyerLogin' onClick={() => setShow(!show)} className='flex items-center '>
+                        <button className='text-white'>Buyer  <LoginIcon sx={{ color: 'white', marginLeft: '5px' }} /> </button>
+                      </Link>
 
-                <button
-                  className='border border-white p-2 px-3 hover:text-blue-500 hover:rounded-lg duration-200 text-white text-bold hidden lg:block '
-                  onClick={() => setShowModal(true)}>
-                  <PersonOutlineOutlinedIcon sx={{ color: 'white' }} /> Login / Register
-                </button>
+                      <Link to='/sellerLogin' onClick={() => setShow(!show)} className='flex items-center'>
+                        <button className='text-white'>Seller  <LoginIcon sx={{ color: 'white', marginLeft: '5px' }} /> </button>
+                      </Link>
+
+                      <Link to='/agentLogin' onClick={() => setShow(!show)} className='flex items-center'>
+                        <button className='text-white'>Agent  <LoginIcon sx={{ color: 'white', marginLeft: '5px' }} /> </button>
+                      </Link>
+
+                      <Link to='/otherLogin' onClick={() => setShow(!show)} className='flex items-center'>
+                        <button className='text-white'>Other  <LoginIcon sx={{ color: 'white', marginLeft: '5px' }} /> </button>
+                      </Link>
+
+                    </div> : null
+                  }
+
+
+                </div>
+
 
               </div>
             </div>
           </div>
-          {
-            showModal ? (
-              <div>
-                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                >
-                  <div className="relative w-auto my-6 mx-auto max-w-3xl w-3xl">
-                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-                      <div className="relative p-6 flex-auto">
-                        <button
-                          className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                          onClick={() => setShowModal(false)}
-                        >
-                          <span className="bg-transparent text-black h-6 w-6 text-2xl block outline-none focus:outline-none text-gray-600">
-                            <CloseIcon className='text-gray-500' />
-                          </span>
-                        </button>
-                        <div>
-                          <Login />
-
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
-              </div>
-            ) : null
-          }
 
           {/* mobile menu */}
           <Disclosure.Panel className="sm:hidden">
@@ -215,7 +211,5 @@ export default function Header({ color, position }) {
         </>
       )}
     </Disclosure>
-
-
   )
 }

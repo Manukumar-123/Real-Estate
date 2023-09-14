@@ -11,10 +11,20 @@ import Profile from "./component/profile/profile";
 import AgentDetails from "./component/associates/agentDetails/agentDetails";
 import Valuation from "./component/valuation/valuation";
 import Notfound from "./component/notfound/notfound";
-import Blog from './component/blog/blog'
-
+import Blog from "./component/blog/blog";
+import BuyerLogin from "./component/login/buyer";
+import SellerLogin from "./component/login/seller";
+import AgentLogin from "./component/login/agent";
+import OtherLogin from "./component/login/other";
+import SubscriptionPlan from "./component/subscription/subscription";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, ElementsConsumer } from "@stripe/react-stripe-js";
 const Homepage = React.lazy(() => import("./component/homepage/homepage"));
 const Layout = React.lazy(() => import("./component/layout/layout"));
+
+const stripePromise = loadStripe(
+  "pk_test_51NYpvdSAZNGXCUBfO5XxuKv9f5zrPEyWJZVvNCnikn8rUhRvzltRXi0IJJq12qprDc1g6iAvNoEvUVcwxqaAFqhX009NscTgJF"
+);
 
 function App() {
   return (
@@ -35,85 +45,125 @@ function App() {
         <Route
           path="/listing"
           element={
-            <React.Suspense fallback={<Loader />}>
+            <>
               <Navbar color={"bg-black"} position={"fixed"} />
               <Listing />
-            </React.Suspense>
+            </>
           }
         />
 
         <Route
           path="/contact"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Layout color={"bg-black"} position={"fixed"}>
-                <Contact />
-              </Layout>
-            </React.Suspense>
+            <Layout color={"bg-black"} position={"fixed"}>
+              <Contact />
+            </Layout>
           }
         />
 
         <Route
           path="/profile"
           element={
-            <React.Suspense>
+            <>
               <Navbar color={"bg-black"} position={"fixed"} />
               <Profile />
-            </React.Suspense>
+            </>
           }
         />
         <Route
           path="/associate"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Layout color={"bg-black"} position={"fixed"}>
-                <Associates />
-              </Layout>
-            </React.Suspense>
+            <Layout color={"bg-black"} position={"fixed"}>
+              <Associates />
+            </Layout>
           }
         />
 
         <Route
           path="/agentDetails"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Layout color={"bg-black"} position={"fixed"}>
-                <AgentDetails />
-              </Layout>
-            </React.Suspense>
+            <Layout color={"bg-black"} position={"fixed"}>
+              <AgentDetails />
+            </Layout>
           }
         />
 
         <Route
           path="/valuation"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Layout color={"bg-black"} position={"fixed"}>
-                <Valuation />
-              </Layout>
-            </React.Suspense>
+            <Layout color={"bg-black"} position={"fixed"}>
+              <Valuation />
+            </Layout>
           }
         />
 
         <Route
           path="/blog"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Layout color={"bg-black"}>
-                <Blog />
-              </Layout>
-            </React.Suspense>
+            <Layout color={"bg-black"}>
+              <Blog />
+            </Layout>
+          }
+        />
+
+        {/* login router */}
+
+        <Route
+          path="buyerLogin"
+          element={
+            <Layout color={"bg-black"} position={"fixed"}>
+              <BuyerLogin />
+            </Layout>
           }
         />
 
         <Route
-          path="*"
+          path="sellerLogin"
           element={
-            <React.Suspense fallback={<Loader />}>
-              <Notfound />
-            </React.Suspense>
+            <>
+              <Navbar color={"bg-black"} position={"fixed"} />
+              <SellerLogin />
+            </>
           }
         />
+
+        <Route
+          path="agentLogin"
+          element={
+            <>
+              <Navbar color={"bg-black"} position={"fixed"} />
+              <AgentLogin />
+            </>
+          }
+        />
+
+        <Route
+          path="subscription"
+          element={
+            <>
+              <Layout color={"bg-black"} position={"fixed"}>
+                <Elements stripe={stripePromise}>
+                  <ElementsConsumer>
+                    {({ elements, stripe }) => (
+                      <SubscriptionPlan elements={elements} stripe={stripe} />
+                    )}
+                  </ElementsConsumer>
+                </Elements>
+              </Layout>
+            </>
+          }
+        />
+
+        <Route
+          path="otherLogin"
+          element={
+            <>
+              <Navbar color={"bg-black"} position={"fixed"} />
+              <OtherLogin />
+            </>
+          }
+        />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </BrowserRouter>
   );

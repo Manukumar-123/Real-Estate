@@ -175,7 +175,7 @@ const Valuation = () => {
                     </Grid>
                   </Grid>
                   <div className="px-0 lg:px-32">
-                    <p className="text-sm text-justify lg:text-center text-gray-500">Your personal information is strictly confidential and will not be shared with any outside organizations. By submitting this form with your telephone number you are consenting for Lochan Real Estate and authorized representatives to contact you even if your name is on the Federal "Do-not-call List.</p>
+                    <p className="text-sm text-justify lg:text-center text-gray-500">Your personal information is strictly confidential and will not be shared with any outside organizations. By submitting this form with your telephone number you are consenting for Anju Himalayan Collection Inc. and authorized representatives to contact you even if your name is on the Federal "Do-not-call List.</p>
                   </div>
 
                   <div className="w-full text-center py-8">

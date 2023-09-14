@@ -31,7 +31,7 @@ const [data,setData] = React.useState({
                                     </div>
                                     <div className="flex items-center justify-center">
                                         {/* <p className="text-gray-600 text-sm">Compnay</p> */}
-                                        <p className="font-semibold">Main office is 1817 Capitol Ave, Sacramento, <br /> CA 95811</p>
+                                        <p className="font-semibold">Aek Kshatri CPA, 5130 Door Drive, Madison WI 53705</p>
                                     </div>
                                 </div>
                                 <hr />
@@ -41,7 +41,7 @@ const [data,setData] = React.useState({
                                     </div>
                                     <div className="flex items-center justify-center">
                                         {/* <p className="text-gray-600 text-sm">Address</p> */}
-                                        <p className="font-semibold">xx@LRE4U.com</p>
+                                        <p className="font-semibold">aek.kshatry@gmail.com</p>
                                     </div>
                                 </div>
                                 <hr />
@@ -51,7 +51,7 @@ const [data,setData] = React.useState({
                                     </div>
                                     <div className="flex items-center justify-center">
                                         {/* <p className="text-gray-600 text-sm">Phone</p> */}
-                                        <p className="font-semibold">800-510-2815</p>
+                                        <p className="font-semibold">6085098075</p>
                                     </div>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <>
-            <div className='py-10 text-white bg-[#323232] w-full'>
+            <div className='py-10 text-white bg-[#323232] w-full  left-0 z-50'>
                 <Container>
                     <Grid container className=' space-y-8 md:space-y-0 lg:space-y-0'>
                         <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -23,15 +23,15 @@ const Footer = () => {
                                 <p className=" text-start">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio excepturi nam totam sequi, ipsam consequatur repudiandae libero illum.</p>
                                 <div className="flex">
                                     <LocationOnIcon className="" sx={{ mr: 1 }} />
-                                    <p className=" text-md ">Main office is 1817 Capitol Ave, Sacramento, <br /> CA 95811</p>
+                                    <p className=" text-md ">Aek Kshatri CPA, 5130 Door Drive, Madison WI 53705</p>
                                 </div>
                                 <div className="flex">
                                     <EmailIcon className="" sx={{ mr: 1 }} />
-                                    <p className=" text-md ">xx@LRE4U.com</p>
+                                    <p className=" text-md ">aek.kshatry@gmail.com</p>
                                 </div>
                                 <div className="flex">
                                     <PhoneIcon className="" sx={{ mr: 1 }} />
-                                    <p className=" text-md ">800-510-2815</p>
+                                    <p className=" text-md ">6085098075</p>
                                 </div>
                             </div>
                         </Grid>
@@ -114,7 +114,7 @@ const Footer = () => {
                         </Grid>
                     </Grid>
                     <div>
-                        <p className=' text-sm tracking-widest p-4 text-center' sx={{ fontFamily: 'Roboto, sans-serif' }}>© Lochan Realestate 2023. All rights reserved.</p>
+                        <p className=' text-sm tracking-widest p-4 text-center' sx={{ fontFamily: 'Roboto, sans-serif' }}>© Anju Himalayan Collection Inc. 2023. All rights reserved.</p>
                     </div>
                 </Container>
             </div>

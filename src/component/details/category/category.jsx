@@ -106,7 +106,7 @@ const Category = () => {
 
                                     <div className='pt-4'>
                                         <p className=' text-sm font-semibold text-gray-400'>DATA SOURCE</p>
-                                        <h6 className='font-semibold text-gray-800'>Lochan Real Estate Administrator</h6>
+                                        <h6 className='font-semibold text-gray-800'>Anju Himalayan Collection Inc.</h6>
                                     </div>
                                 </div>
 

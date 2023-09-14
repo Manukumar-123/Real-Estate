@@ -1,10 +1,10 @@
 {
     "apps" : [
       {
-        "name"      : "Lochan real estate",
+        "name"      : "ACHI",
         "script"    : "npx",
         "interpreter": "none",
-        "args": "serve -s build -p 7000"
+        "args": "serve -s build -p 7001"
       }
     ]
   }

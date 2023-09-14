@@ -108,7 +108,7 @@ export default function BasicTabs() {
       <TabPanel value={value} index={0} className="p-0">
         <div className='grid md:grid-cols-2 gap-4 mt-4'>
           <Formik initialValues={{ loginEmail: '', loginPassword: '' }} onSubmit={Login}>
-            {({}) => (
+            {({ }) => (
               <Form>
                 <div className='mb-5'>
                   <Field
@@ -119,7 +119,7 @@ export default function BasicTabs() {
                     name='loginEmail'
                     className='w-full'
                   />
-                
+
                 </div>
                 <div className='mb-3'>
                   <Field
@@ -130,7 +130,7 @@ export default function BasicTabs() {
                     name='loginPassword'
                     className='w-full'
                   />
-                 
+
                 </div>
                 <div className='flex justify-between items-center mb-3'>
                   <div className='pr-3'>
@@ -145,6 +145,15 @@ export default function BasicTabs() {
                 </div>
                 <div>
                   <button className='px-4 py-3 text-white rounded-md font-semibold bg-blue-800 text-center w-full' type="submit">Log In</button>
+                </div>
+                <div className="flex items-center justify-between mt-6">
+                  <button className="px-4 py-2  rounded-full bg-blue-800 text-white  text-xs" >Agent </button>
+                  <div className="flex items-center justify-center">
+                    <hr className="border border-blue-800 w-8" />
+                    <div className="w-8 h-6 text-white text-xs rounded-full bg-gradient-to-r from-blue-800 to-red-800  flex items-center justify-center">OR</div>
+                    <hr className="border border-red-800 w-8" />
+                  </div>
+                  <button className="px-4 py-2 rounded-full bg-red-800 text-white  text-xs" >Seller </button>
                 </div>
               </Form>
             )}
@@ -168,6 +177,7 @@ export default function BasicTabs() {
                     required
                     label="Username"
                     name='username'
+                    placeholder="John Doe"
                     defaultValue=""
                     className='w-full'
                   />
@@ -180,6 +190,7 @@ export default function BasicTabs() {
                     as={TextField}
                     type='email'
                     name='email'
+                    placeholder="Example@gmail.com"
                     required
                     label="Email Address"
                     defaultValue=""
@@ -212,11 +223,10 @@ export default function BasicTabs() {
                 <div>
                   <div>
                     <button
-                      className={`px-4 py-3 text-white rounded-md font-semibold bg-blue-800 ${
-                        Object.keys(errors).length !== 0 ? 'bg-gray-400' : 'bg-blue-800'
-                      } text-center w-full`}
+                      className={`px-4 py-3 text-white rounded-md font-semibold bg-blue-800 ${Object.keys(errors).length !== 0 ? 'bg-gray-400' : 'bg-blue-800'
+                        } text-center w-full`}
                       type="submit"
-                      disabled={Object.keys(errors).length !== 0} 
+                      disabled={Object.keys(errors).length !== 0}
                     >
                       Sign Up
                     </button>
